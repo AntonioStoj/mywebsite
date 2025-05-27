@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antonio Stojcevski – Full Stack Developer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Antonio Stojcevski</h1>
+    <p>Expert Full Stack Web Developer – I build stunning, scalable, and complex applications that perform.</p>
+    <div id="logo-container">
+      <canvas id="three-canvas"></canvas>
+    </div>
+  </header>
+
+  <section class="section text-center">
+    <div class="container">
+      <h2 class="mb-4">Why work with me?</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card-custom">
+            <i class="fas fa-desktop"></i>
+            <h4>Full Stack Mastery</h4>
+            <p>I build beautiful frontends and powerful backend APIs using modern frameworks like React, Next.js, Node.js, and Express.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-custom">
+            <i class="fas fa-cogs"></i>
+            <h4>Real World Experience</h4>
+            <p>I’ve developed production-grade applications, handling authentication, complex forms, data visualization, and integrations.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-custom">
+            <i class="fas fa-paint-brush"></i>
+            <h4>Creative & Functional</h4>
+            <p>With a strong design eye, I combine form and function to create clean, UX-optimized, and visually appealing web experiences.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects">
+    <div class="container">
+      <h2 class="text-center mb-4">Example Projects</h2>
+      <div class="project">
+        <h4>Real Estate Lead Qualifier</h4>
+        <p>A multi-step form with conditional logic and dynamic data summary – built for real estate agents.</p>
+      </div>
+      <div class="project">
+        <h4>E-Commerce Automation Tool</h4>
+        <p>A Shopify-integrated dashboard that automates product imports, pricing, and order tracking in real time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    📞 Contact: <strong>+49 15204883460</strong>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 80 / 80, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), antialias: true, alpha: true });
+    renderer.setSize(80, 80);
+
+    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    const material = new THREE.MeshNormalMaterial({ transparent: true });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+    camera.position.z = 40;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      torusKnot.rotation.x += 0.02;
+      torusKnot.rotation.y += 0.02;
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener("scroll", function() {
+      document.querySelectorAll(".card-custom, .project").forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          card.classList.add("visible");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
